@@ -1,0 +1,9 @@
+---
+#onJoinController config file
+
+#When changing commands, do not use / at the begining 
+
+#The command that should be runned when someone joins
+
+JoinCommand: tell {player} Thank you for using onJoinController!
+...
