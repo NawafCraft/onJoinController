@@ -1,0 +1,12 @@
+name: onJoinController
+author: BoxOfDevs Team
+authors:
+- Riegert
+- TheDragonRing
+version: 1.0.0
+description: 
+api:
+- 1.14.2
+- 2.0.0
+main: onJoinController\Main
+load: STARTUP
