@@ -4,7 +4,7 @@ authors:
 - Riegert
 - TheDragonRing
 version: 1.0.0
-description: 
+description: A plugin that allows you to execute set commands when a player joins
 api:
 - 1.14.2
 - 2.0.0
