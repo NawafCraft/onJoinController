@@ -1,6 +1,6 @@
 <?php
 
-namespace onJoinController\Main;
+namespace onJoinController;
 
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
