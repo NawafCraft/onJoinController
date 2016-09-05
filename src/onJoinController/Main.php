@@ -15,6 +15,7 @@ class Main extends PluginBase implements Listener {
 	}
 	
 	public function onEnable() {
+		@mkdir($this->getDataFolder());
 		$this->getLogger()->info("onJoinController has been enabled");
 		$this->saveDefaultConfig();
 		$this->reloadConfig();
