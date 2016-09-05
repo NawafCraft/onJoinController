@@ -9,26 +9,27 @@ use pocketmine\Player;
 use pocketmine\event\player\PlayerJoinEvent;
 
 class Main extends PluginBase implements Listener {
-
-    public function onLoad(){
-                $this->getLogger()->info("Loading onJoinController");
-        }
-
-        public function onEnable(){
-                $this->getLogger()->info("OnJoinController has been enabled");
-                $this->getServer()->getPluginManager()->registerEvents($this, $this);
-                $this->saveDefaultConfig();
-            }
-        
-            public function onJoin(PlayerJoinEvent $event) {
-                    if($this->getConfig()->get("enablejoin") === "true"){
-                    $player = $event->getPlayer();
-                    foreach($this->getConfig()->get("JoinCommand") as $command){
-                    $this->getServer()->dispatchCommand(new ConsoleCommandSender(), str_replace("{player}", $player->getName(), $command));   
-                    }
-                }
-            }
-    public function onDisable(){
-            $this->getLogger()->info("OnJoinController has been disabled");
-        }
-            } 
+	
+	public function onLoad() {
+		$this->getLogger()->info("Loading onJoinController...");
+	}
+	
+	public function onEnable() {
+		$this->getLogger()->info("onJoinController has been enabled");
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	}
+	
+	public function onDisable() {
+		$this->getLogger()->info("onJoinController has been disabled");
+	}
+	
+	public function onJoin(PlayerJoinEvent $event) {
+		if($this->getConfig()->get("enabled")) {
+			$player = $event->getPlayer();
+			foreach($this->getConfig()->get("commands") as $cmd) {
+				$command = str_replace(array("{player}", "{onlineplayers}", "{maxplayers}"), array($player->getName(), count($this->getServer()->getOnlinePlayers()), count($this->getServer()->getMaxPlayers())), $cmd);
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), $command);
+			}
+		}
+	}
+}
